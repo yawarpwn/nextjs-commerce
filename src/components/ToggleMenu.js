@@ -1,6 +1,6 @@
 export default function ToggleMenu({open, handleOpen}) {
   return (
-    <button aria-label="menu" onClick={handleOpen}>
+    <button aria-label="menu" onClick={handleOpen} className="lg:hidden">
       {!open ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
