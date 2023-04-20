@@ -1,0 +1,31 @@
+import { createClient } from "contentful"
+import ProductCard from "@/components/ProductCard"
+
+export default function Productos({ productos }) {
+  return (
+    <>
+      {productos.map(({ fields: product}, index) => {
+        return (
+        <div className="grid grid-cols-2 lg:grid-cols-6" key={index}>
+          <ProductCard product={product} key={index} />
+        </div>
+        )
+      })}
+    </>
+  )
+}
+
+export async function getStaticProps() {
+  const client = createClient({
+    space: "84zksbb4bim6",
+    accessToken: "o3HA92n-hmWBmgcCk1f0uAjJQ4IV-nZ9wD2M1WrDugk",
+  })
+
+  const res = await client.getEntries({ content_type: "productos" })
+
+  return {
+    props: {
+      productos: res.items,
+    },
+  }
+}

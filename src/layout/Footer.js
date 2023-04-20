@@ -92,15 +92,15 @@ export default function Footer() {
           {footerLinks.map(({ links, title }, index) => {
             return (
               <div key={index}>
-                <h3 class="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-white">
+                <h3 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-white">
                   {title}
                 </h3>
                 <ul>
                   {links.map((link, i) => (
-                    <li class="mb-4" key={i}>
+                    <li className="mb-4" key={i}>
                       <a
                         href={link.href}
-                        class="font-normal text-gray-600 dark:text-gray-400 dark:hover:text-white hover:underline"
+                        className="font-normal text-gray-600 dark:text-gray-400 dark:hover:text-white hover:underline"
                       >
                         {link.title}
                       </a>
@@ -111,8 +111,8 @@ export default function Footer() {
             )
           })}
         </div>
-        <hr class="my-8 border-gray-200 dark:border-gray-700 lg:my-12" />
-        <span class="block text-center text-gray-600 dark:text-gray-400 ">
+        <hr className="my-8 border-gray-200 dark:border-gray-700 lg:my-12" />
+        <span className="block text-center text-gray-600 dark:text-gray-400 ">
           © <span id="currentYear">2023</span>{" "}
           <a href="https://flowbite.com">MOTO CENTER</a>, Todo los derechos
           reservados.
