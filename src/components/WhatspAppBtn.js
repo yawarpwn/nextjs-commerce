@@ -82,7 +82,7 @@ export default function WhatsappBtnPopup() {
             </div>
             <div className=" mt-[14px] bg-slate-50/5 rounded">
               <a
-                href={`${WHATSAPP_LINK}Hola Raquel, vengo de la pagina. Estoy interesado en sus productos.`}
+                href={`${WHATSAPP_LINK}`}
                 target="_blank"
                 className="relative flex items-center space-x-4  rounded-r-md border-l-2 border-green-500  py-4 px-3 shadow-sm   "
               >

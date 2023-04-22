@@ -7,8 +7,24 @@ const client = createClient({
 
 export async function getProducts() {
   const res = await client.getEntries({ content_type: 'productos' })
+  const products = res.items
 
-  return res.items
+  const mappedProducts = products.map(({fields, sys, metadata}) => {
+    return {
+      name: fields.name,
+      description: fields.description,
+      id: sys.id,
+      images: fields.images.map(({ fields, sys}) => {
+        return {
+          url: fields.file.url,
+          title: fields.title,
+          id: sys.id
+        }
+      })
+    }
+  })
+
+  return mappedProducts
 }
 
 export async function getProduct(entryId) {

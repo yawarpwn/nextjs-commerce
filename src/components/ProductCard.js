@@ -1,8 +1,5 @@
-import slugify from "slugify"
 export default function ProductCard({ product }) {
   const { name , images, price, offert = 100, rating = 5, id } = product
-  console.log({product})
-  const slug = slugify(name, {lower: true})
   return (
     <a href={`/productos/${id}`}>
       <div className="product-card shadow-md rounded-md transition-all">
@@ -10,7 +7,7 @@ export default function ProductCard({ product }) {
           <img
             className="absolute inset-0 max-h-[155px] m-auto max-w-[85%]"
             alt={name}
-            src={images[0].fields.file.url}
+            src={images[0].url}
             loading="lazy"
           />
         </div>

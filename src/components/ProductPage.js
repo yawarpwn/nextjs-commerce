@@ -1,5 +1,8 @@
+import { generateWhatsappLink } from '@/constants/links'
 import ProductSlide from './ProductSlide'
 import SEO from './SEO'
+import { useRouter } from 'next/router'
+import { config } from '@/config'
 
 export default function ProductPage({ product }) {
   const {
@@ -18,6 +21,11 @@ export default function ProductPage({ product }) {
   const getDiscountPorcent = () => {
     return 200
   }
+
+  const router = useRouter()
+  const link = new URL(router.asPath, config.URL) 
+  const generateLink = generateWhatsappLink({name, link: link.href})
+  console.log(generateLink)
   return (
     <>
       <SEO description={description} title={name} image={images[0].url} />
@@ -63,7 +71,7 @@ export default function ProductPage({ product }) {
           <div className="flex gap-4">
             <a
               className="bg-green-500 hover:bg-green-600 transition-all p-4 text-white rounded-lg w-[50%] flex items-center gap-2 text-sm cursor-pointer"
-              // href={whatsappApi}
+              href={generateLink}
               target="_blank"
             >
               <svg
@@ -121,10 +129,8 @@ export default function ProductPage({ product }) {
         </div>
         <div className="w-ful md:w-[calc(40%-3rem)] ml-auto">
           <div className="text-center border p-3 rounded-md">
-            <p className="font-semibold">Hacemos descuento al por mayor</p>
             <p>
-              Los pedidos realizados despues de las 15:00 Hrs se servirán al día
-              siguiente
+              ANTES DE REALIZAR TU COMPRA, REALIZAR TU CONSULTAS DIRECTAMENTE AL WHATSAPP
             </p>
           </div>
           <div className="flex items-center border-b p-2 space-x-4">

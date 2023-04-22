@@ -10,11 +10,11 @@
     },
     {
       title: 'Nosotros',
-      href: '/nosotros',
+      href: '#',
     },
     {
       title: 'Contacto',
-      href: '/contacto',
+      href: '#',
     },
   ]
 

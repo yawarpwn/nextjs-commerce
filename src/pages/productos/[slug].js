@@ -1,6 +1,5 @@
 import { getProduct, getProducts } from '@/services/getProducts'
 import ProductPage from '@/components/ProductPage'
-import slugify from 'slugify'
 
 export default function Page({ product}) {
   return (
@@ -16,11 +15,8 @@ export async function getStaticPaths() {
 
   // Get the paths we want to pre-render based on posts
   const paths = products.map((product) => {
-    const { fields, sys } = product
-    const slug = slugify(fields.name, { lower: true })
-
     return {
-      params: { slug : sys.id },
+      params: { slug : product.id },
     }
   })
 
