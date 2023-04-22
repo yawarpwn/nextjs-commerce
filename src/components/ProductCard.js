@@ -1,7 +1,9 @@
+import { nameToSlug } from "@/utils"
 export default function ProductCard({ product }) {
   const { name , images, price, offert = 100, rating = 5, id } = product
+  const slugName = nameToSlug(name)
   return (
-    <a href={`/productos/${id}`}>
+    <a href={`/productos/${slugName}`}>
       <div className="product-card shadow-md rounded-md transition-all">
         <div className="relative h-0 w-full pb-[100%]">
           <img

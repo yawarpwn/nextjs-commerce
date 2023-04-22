@@ -2,10 +2,8 @@ import ToggleMenu from '@/components/ToggleMenu'
 import Logo from '@/components/Logo'
 import { navigation } from '@/constants/navigation'
 
-import { useState } from 'react'
-export default function Header() {
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(!open)
+export default function Header({ handleOpen, open}) {
+
   return (
     <>
       <div className="header-wrapper">

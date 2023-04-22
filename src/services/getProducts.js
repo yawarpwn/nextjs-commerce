@@ -1,3 +1,4 @@
+import { nameToSlug } from '@/utils'
 import { createClient } from 'contentful'
 
 const client = createClient({
@@ -9,18 +10,19 @@ export async function getProducts() {
   const res = await client.getEntries({ content_type: 'productos' })
   const products = res.items
 
-  const mappedProducts = products.map(({fields, sys, metadata}) => {
+  const mappedProducts = products.map(({ fields, sys, metadata }) => {
     return {
       name: fields.name,
       description: fields.description,
       id: sys.id,
-      images: fields.images.map(({ fields, sys}) => {
+      slug: nameToSlug(fields.name),
+      images: fields.images.map(({ fields, sys }) => {
         return {
           url: fields.file.url,
           title: fields.title,
-          id: sys.id
+          id: sys.id,
         }
-      })
+      }),
     }
   })
 

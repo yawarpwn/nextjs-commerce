@@ -1,5 +1,6 @@
-import { getProduct, getProducts } from '@/services/getProducts'
+import { getProducts } from '@/services/getProducts'
 import ProductPage from '@/components/ProductPage'
+import { nameToSlug } from '@/utils'
 
 export default function Page({ product}) {
   return (
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
   // Get the paths we want to pre-render based on posts
   const paths = products.map((product) => {
     return {
-      params: { slug : product.id },
+      params: { slug : product.slug },
     }
   })
 
@@ -27,7 +28,8 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-  const product  = await getProduct(params.slug)
+  const products = await getProducts()
+  const product  = products.find(p => p.slug === params.slug)
   // Pass post data to the page via props
   return { props: { product } }
 }
