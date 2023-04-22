@@ -9,6 +9,9 @@ export default function SEO({ title, description, image }) {
     config.URL + (router.asPath === '/' ? '' : router.asPath)
   ).split('?')[0]
 
+  const ogImage = new URL(image, config.URL)
+  const DEFAULT_IMAGE = new URL(config.IMAGE, config.URL)
+
   return (
     <Head>
       {/* Basic */}
@@ -25,7 +28,7 @@ export default function SEO({ title, description, image }) {
         property="og:description"
         content={description ? description : config.DESCRIPTION}
       />
-      <meta property="og:image" content={image ? image : config.IMAGE} />
+      <meta property="og:image" content={image ? ogImage : DEFAULT_IMAGE} />
     </Head>
   )
 }
