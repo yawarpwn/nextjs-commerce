@@ -25,7 +25,7 @@ export default function Layout({ children }) {
       <Header />
       <div className="max-w-7xl mx-auto w-full px-4">
         <Sidebar />
-        <main className="ml-[300px]">{children}</main>
+        <main className="lg:ml-[300px]">{children}</main>
       </div>
       <WhatsappBtnPopup />
       <Footer />

@@ -1,7 +1,10 @@
+import slugify from "slugify"
 export default function ProductCard({ product }) {
-  const { name, description, images, price, offert = 100, rating = 5 } = product
+  const { name , images, price, offert = 100, rating = 5, id } = product
+  console.log({product})
+  const slug = slugify(name, {lower: true})
   return (
-    <a href={`/seguridad/`}>
+    <a href={`/productos/${id}`}>
       <div className="product-card shadow-md rounded-md transition-all">
         <div className="relative h-0 w-full pb-[100%]">
           <img

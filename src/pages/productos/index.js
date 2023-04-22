@@ -1,26 +1,24 @@
-import { createClient } from "contentful"
 import ListOfProducts from "@/components/ListOfProducts"
+import SEO from "@/components/SEO"
+import { getProducts } from "@/services/getProducts"
 
-export default function Productos({ products }) {
+export default function Productos({ products = [] }) {
   return (
     <>
+      <SEO title="Productos" description={'Pagina de productos de Motos Center Tienda de partes de motos'} />
       <ListOfProducts products={products} />
     </>
   )
 }
 
 export async function getStaticProps() {
-  const client = createClient({
-    space: "84zksbb4bim6",
-    accessToken: "o3HA92n-hmWBmgcCk1f0uAjJQ4IV-nZ9wD2M1WrDugk",
-  })
 
-  const res = await client.getEntries({ content_type: "productos" })
+  const products = await getProducts()
 
   return {
     props: {
-      products: res.items,
+      products
     },
-    revalidate: 1
+    revalidate: 1000
   }
 }
