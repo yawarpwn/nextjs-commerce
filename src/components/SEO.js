@@ -1,12 +1,14 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { config } from '@/config'
+import { useRouter } from 'next/router'
 
 export default function SEO({ title, description, image }) {
-  const router = useRouter()
-  const { asPath } = router
-  const canonicalUrl = new URL(asPath, config.URL)
   const DEFAULT_TITLE = `Tienda de Accesorio de Motos y ropa | ${config.TITLE}`
+  const router = useRouter()
+  const canonicalUrl = (
+    config.URL + (router.asPath === '/' ? '' : router.asPath)
+  ).split('?')[0]
+
   return (
     <Head>
       {/* Basic */}
