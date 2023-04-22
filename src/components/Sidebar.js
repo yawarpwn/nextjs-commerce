@@ -1,33 +1,13 @@
 import Link from 'next/link'
-const navigationByCategory = [
-  {
-    name: 'Cascos',
-    href: '/category/cascos',
-  },
-
-  {
-    name: 'Ropa',
-    href: '/category/cascos',
-  },
-
-  {
-    name: 'Guantes',
-    href: '/category/cascos',
-  },
-
-  {
-    name: 'Otros',
-    href: '/category/cascos',
-  },
-]
+import { navigationByCategory } from '@/constants/navigation'
 
 export default function Sidebar() {
   return (
     <aside className="hidden lg:block w-[222px] mr-14 fixed top-16 bg-black">
       <ul>
-        {navigationByCategory.map(({ name, href }) => {
+        {navigationByCategory.map(({ title, href }) => {
           return (
-            <li key={name}>
+            <li key={title}>
               <Link href={href} legacyBehavior>
                 <a className="flex items-center gap-4 border-t-white/10 border-t h-16">
                   <svg
@@ -43,7 +23,7 @@ export default function Sidebar() {
                   >
                     <path d="M9 18l6-6-6-6"></path>
                   </svg>
-                  <h4>{name}</h4>
+                  <h4>{title}</h4>
                 </a>
               </Link>
             </li>

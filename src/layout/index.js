@@ -14,6 +14,10 @@ export default function Layout({ children }) {
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(!open)
+
+  const onClose =() => {
+    setOpen(false)
+  }
   return (
     <>
       <Header handleOpen={handleOpen} open={open} />
@@ -28,7 +32,7 @@ export default function Layout({ children }) {
           <main className="lg:ml-[300px]">{children}</main>
         </div>
       )}
-      <MobileNavigation open={open} />
+      <MobileNavigation open={open} onClose={onClose} />
       <WhatsappBtnPopup />
       <Footer />
     </>

@@ -1,24 +1,59 @@
-export default function MobileNavigation({ open }) {
+import { navigationByCategory } from '@/constants/navigation'
+import Link from 'next/link'
+export default function MobileNavigation({ open, onClose }) {
   return (
     <>
-      <div className="mobileNavigation-wrapper">
-        Mobile Navigation
-      </div>
-      <style jsx global>
+      <nav className={`mobileMenu-wrapper ${open ? 'mobileMenu-open' : ''}`}>
+        <ul>
+          {navigationByCategory.map(({ href, title }) => (
+            <Link key={title} href={href} onClick={onClose}>
+              <li>{title}</li>
+            </Link>
+          ))}
+        </ul>
+      </nav>
+      <style jsx>
         {`
-          .mobileNavigation--open {
-            display: block;
-          }
-          .mobileNavigation-wrapper {
-            --page-margin: 24px;
-            --page-with-margin: 1200px + calc(24px * 2);
+          .mobileMenu-wrapper {
+            --gap: 24px;
             display: none;
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            width: var(--page-with-margin);
-            padding-left: var(--page-margin);
-            padding-right: var(--page-margin);
+            visibility: hidden;
+            width: 100%;
+            max-width: 100vw;
+            padding: 0 var(--gap) var(--gap) var(--gap);
+            background: #000;
+            z-index: 2000;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: scroll;
+            transition: all 0.3s ease;
+          }
+
+          .mobileMenu-open {
+            display: block;
+            visibility: visible;
+            top: calc(64px - 1px);
+          }
+          .mobileMenu-wrapper ul li {
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            color: #999;
+            font-size: 1rem;
+            height: calc(3 * 24px);
+            border-bottom: 1px solid #333;
+            transition: background-color 0.2s ease-in-out;
+          }
+
+          .mobileMenu-wrapper ul li:hover {
+            background-color: #111;
           }
         `}
       </style>

@@ -3,6 +3,7 @@ import ProductSlide from './ProductSlide'
 import SEO from './SEO'
 import { useRouter } from 'next/router'
 import { config } from '@/config'
+import RichText from './RichText'
 
 export default function ProductPage({ product }) {
   const {
@@ -11,20 +12,21 @@ export default function ProductPage({ product }) {
     price = 200,
     offert = 100,
     marca = 'marca',
-    shortDesc = 'Descripcion pequena dadflajf',
+    description = 'Descripcion pequena dadflajf',
     sku = 'sku-default',
     dataSheet = 'https://datashett.com',
     images = [],
-    description = ['beneficion 1', 'beneficion 2', 'beneficion 3'],
+    details,
   } = product
+
 
   const getDiscountPorcent = () => {
     return 200
   }
 
   const router = useRouter()
-  const link = new URL(router.asPath, config.URL) 
-  const generateLink = generateWhatsappLink({name, link: link.href})
+  const link = new URL(router.asPath, config.URL)
+  const generateLink = generateWhatsappLink({ name, link: link.href })
   return (
     <>
       <SEO description={description} title={name} image={images[0].url} />
@@ -49,7 +51,7 @@ export default function ProductPage({ product }) {
             )}
           </p>
           <div className="min-h-[100px]">
-            <p className="mb-4">{shortDesc || description[0]}</p>
+            <p className="mb-4">{description}</p>
           </div>
           {offert ? (
             <>
@@ -122,14 +124,15 @@ export default function ProductPage({ product }) {
             <h2 className="text-xl">Detalles de Producto</h2>
             {/* <ChevronDown fill="currentColor" /> */}
           </div>
-          <div className="py-6 px-4">
-            <ul className="p-0">{description}</ul>
+          <div className="py-6 px-4 richText">
+            {details && <RichText details={details} />}
           </div>
         </div>
         <div className="w-ful md:w-[calc(40%-3rem)] ml-auto">
           <div className="text-center border p-3 rounded-md">
             <p>
-              ANTES DE REALIZAR TU COMPRA, REALIZAR TU CONSULTAS DIRECTAMENTE AL WHATSAPP
+              ANTES DE REALIZAR TU COMPRA, REALIZAR TU CONSULTAS DIRECTAMENTE AL
+              WHATSAPP
             </p>
           </div>
           <div className="flex items-center border-b p-2 space-x-4">

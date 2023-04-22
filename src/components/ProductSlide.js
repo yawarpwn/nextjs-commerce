@@ -37,6 +37,10 @@ export default function ProductSlide({ images }) {
       </div>
       <div className="w-full lg:w-[80%]">
         <Swiper
+          style={{
+            '--swiper-theme-color': 'orange',
+            '--swiper-pagination-bullet-inactive-color': 'orange',
+          }}
           id="main-swiper"
           className="main-swiper"
           modules={[Pagination, Navigation, Thumbs]}
