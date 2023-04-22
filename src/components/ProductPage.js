@@ -4,25 +4,13 @@ import SEO from './SEO'
 import { useRouter } from 'next/router'
 import { config } from '@/config'
 import RichText from './RichText'
+import { getDiscount } from '@/utils'
 
 export default function ProductPage({ product }) {
-  const {
-    category = 'categoria',
-    name = 'default name',
-    price = 200,
-    offert = 100,
-    marca = 'marca',
-    description = 'Descripcion pequena dadflajf',
-    sku = 'sku-default',
-    dataSheet = 'https://datashett.com',
-    images = [],
-    details,
-  } = product
+  const { offert, name, description, price, brand, images, dataSheet, details } = product
 
+  const discount = getDiscount({price, offert})
 
-  const getDiscountPorcent = () => {
-    return 200
-  }
 
   const router = useRouter()
   const link = new URL(router.asPath, config.URL)
@@ -37,18 +25,7 @@ export default function ProductPage({ product }) {
         <div className="w-full md:w-[calc(40%-3rem)] flex flex-col space-y-4 mb-8 ml-auto">
           <h1 className="text-3xl font-bold">{name}</h1>
           <p className="mb-2">
-            {marca ? (
-              <>
-                <span className="text-base font-semibold">{marca}</span>
-              </>
-            ) : (
-              <>
-                <span className="text-base">SKU:{'  '}</span>
-                <span className="text-base font-semibold uppercase underline">
-                  {sku}
-                </span>
-              </>
-            )}
+            <span className="text-base font-semibold">{brand}</span>
           </p>
           <div className="min-h-[100px]">
             <p className="mb-4">{description}</p>
@@ -56,11 +33,11 @@ export default function ProductPage({ product }) {
           {offert ? (
             <>
               <div>
-                <span className="text-zinc-400 line-through">
+                <span className="line-through">
                   S/. {price}.00
                 </span>
                 <span className="ml-2">
-                  - {getDiscountPorcent(price, offert)}%
+                  - {discount}%
                 </span>
               </div>
               <p className="text-3xl font-bold text-red-500">S/. {offert}.00</p>
@@ -97,7 +74,7 @@ export default function ProductPage({ product }) {
             </a>
             <a
               className="bg-primary hover:bg-primary-dark transition-all p-4 text-white rounded-lg w-[50%] flex items-center gap-2 text-sm"
-              href={dataSheet}
+              href={dataSheet ? dataSheet : '#'}
               target="_blank"
             >
               <svg

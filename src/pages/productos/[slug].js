@@ -4,9 +4,7 @@ import { nameToSlug } from '@/utils'
 
 export default function Page({ product}) {
   return (
-    <div>
       <ProductPage product={product} />
-    </div>
   )
 }
 // This function gets called at build time

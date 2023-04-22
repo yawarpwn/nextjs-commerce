@@ -1,79 +1,80 @@
-import Logo from "@/components/Logo"
+import Logo from '@/components/Logo'
+import { config } from '@/config'
 export default function Footer() {
   const footerLinks = [
     {
-      title: "Recursos",
+      title: 'Recursos',
       links: [
         {
-          title: "recurso 1",
-          href: "#",
+          title: 'recurso 1',
+          href: '#',
         },
 
         {
-          title: "recurso 2",
-          href: "#",
+          title: 'recurso 2',
+          href: '#',
         },
 
         {
-          title: "recurso 3",
-          href: "#",
+          title: 'recurso 3',
+          href: '#',
         },
       ],
     },
     {
-      title: "Siguenos",
+      title: 'Siguenos',
       links: [
         {
-          title: "Facebook",
-          href: "#",
+          title: 'Facebook',
+          href: '#',
         },
 
         {
-          title: "Tiktok",
-          href: "#",
+          title: 'Tiktok',
+          href: '#',
         },
 
         {
-          title: "Instagram",
-          href: "#",
+          title: 'Instagram',
+          href: '#',
         },
       ],
     },
     {
-      title: "Conocenos",
+      title: 'Conocenos',
       links: [
         {
-          title: "Quienes somos",
-          href: "#",
+          title: 'Quienes somos',
+          href: '#',
         },
 
         {
-          title: "Terminos y Condiciones",
-          href: "#",
+          title: 'Terminos y Condiciones',
+          href: '#',
         },
 
         {
-          title: "Politicas de uso",
-          href: "#",
+          title: 'Politicas de uso',
+          href: '#',
         },
       ],
     },
     {
-      title: "Contacto",
+      title: 'Contacto',
       links: [
         {
-          title: "Contactanos",
-          href: "#",
+          title: 'Contactanos',
+          href: '#',
         },
 
         {
-          title: "Tienda",
-          href: "#",
+          title: 'Tienda',
+          href: '#',
         },
 
         {
-          title: "Como llegar",
-          href: "#",
+          title: 'Como llegar',
+          href: '#',
         },
       ],
     },
@@ -113,8 +114,8 @@ export default function Footer() {
         </div>
         <hr className="my-8 border-gray-200 dark:border-gray-700 lg:my-12" />
         <span className="block text-center text-gray-600 dark:text-gray-400 ">
-          © <span id="currentYear">2023</span>{" "}
-          <a href="https://flowbite.com">MOTO CENTER</a>, Todo los derechos
+          © <span id="currentYear">2023</span>{' '}
+          <a href="https://flowbite.com">{config.TITLE}</a>, Todo los derechos
           reservados.
         </span>
       </div>

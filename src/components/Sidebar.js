@@ -3,7 +3,7 @@ import { navigationByCategory } from '@/constants/navigation'
 
 export default function Sidebar() {
   return (
-    <aside className="hidden lg:block w-[222px] mr-14 fixed top-16 bg-black">
+    <aside className="hidden lg:block w-[200px] mr-14 fixed top-16 bg-black">
       <ul>
         {navigationByCategory.map(({ title, href }) => {
           return (

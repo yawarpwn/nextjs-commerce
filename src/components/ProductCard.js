@@ -1,6 +1,7 @@
-import { nameToSlug } from "@/utils"
+import { getDiscount, nameToSlug } from "@/utils"
 export default function ProductCard({ product }) {
-  const { name , images, price, offert = 100, rating = 5, id } = product
+  const { name , images, price, offert,  id, brand } = product
+  const discount = getDiscount({price, offert})
   const slugName = nameToSlug(name)
   return (
     <a href={`/productos/${slugName}`}>
@@ -14,29 +15,30 @@ export default function ProductCard({ product }) {
           />
         </div>
         <div className="product-card__body p-2">
-            <span className="text-xs font-bold uppercase">marca</span>
+            <span className="text-xs font-bold uppercase">{brand}</span>
           <div className="min-h-[60px] mt-2">
             <p className="text-xs md:text-sm">{name}</p>
           </div>
-          {rating && <start-rating rating={rating}></start-rating>}
           {offert ? (
             <div className="min-h-[50px]">
               <div>
                 <span className="text-zinc-400 line-through">S/.{price}.00</span>
-                <span className="ml-2">-20%</span>
+                <span className="ml-2">-{discount}%</span>
               </div>
               <div />
               <div>
-                <span className="card__price font-bold">S/. {offert}.00</span>
+                <span className="card__price font-bold text-orange-700">S/. {offert}.00</span>
               </div>
             </div>
-          ) : (
-            <div className={`min-h-[50px] ${code && 'hidden'}`}>
+          ) 
+            : (
+            <div className={`min-h-[50px]`}>
               <div>
-                <span className="card__price font-bold">S/. {price}.00</span>
+                <span className="card__price font-bold text-orange-700">S/. {price}.00</span>
               </div>
             </div>
-          )}
+          )
+        }
         </div>
       </div>
     </a>

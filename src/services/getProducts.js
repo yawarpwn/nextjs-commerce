@@ -10,14 +10,15 @@ export async function getProducts() {
   const res = await client.getEntries({ content_type: 'productos' })
   const products = res.items
 
-
-
   const mappedProducts = products.map(({ fields, sys, metadata }) => {
+    const { offert, name, description, price, brand } = fields
     return {
-      name: fields.name,
-      description: fields.description,
+      name,
+      brand: brand ? brand : 'nacional',
+      offert: offert ? offert : null,
+      description,
       id: sys.id,
-      price: fields.price,
+      price,
       slug: nameToSlug(fields.name),
       details: fields.details ? fields.details : null,
       images: fields.images.map(({ fields, sys }) => {

@@ -29,7 +29,7 @@ export default function Layout({ children }) {
       ) : (
         <div className="max-w-7xl mx-auto w-full px-4">
           <Sidebar />
-          <main className="lg:ml-[300px]">{children}</main>
+          <main className="lg:ml-[200px]">{children}</main>
         </div>
       )}
       <MobileNavigation open={open} onClose={onClose} />
