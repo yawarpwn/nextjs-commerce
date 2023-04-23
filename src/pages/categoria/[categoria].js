@@ -33,5 +33,5 @@ export async function getStaticProps({ params }) {
     (p) => p.category[0] === params.categoria
   )
 
-  return { props: { products: productsFiltered } }
+  return { props: { products: productsFiltered }, revalidate: 60 }
 }
