@@ -1,6 +1,6 @@
 import ListOfProducts from "@/components/ListOfProducts"
 import SEO from "@/components/SEO"
-import { getProducts } from "@/services/getProducts"
+import { getCategories, getProducts } from "@/services/getProducts"
 
 export default function Productos({ products = [] }) {
   return (
@@ -14,6 +14,7 @@ export default function Productos({ products = [] }) {
 export async function getStaticProps() {
 
   const products = await getProducts()
+  getCategories()
 
   return {
     props: {

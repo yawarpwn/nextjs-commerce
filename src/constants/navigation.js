@@ -22,21 +22,36 @@
 export const navigationByCategory = [
   {
     title: 'Cascos',
-    href: '/category/cascos',
-  },
-
-  {
-    title: 'Ropa',
-    href: '/category/cascos',
+    href: '/categoria/cascos',
   },
 
   {
     title: 'Guantes',
-    href: '/category/cascos',
+    href: '/categoria/guantes',
+  },
+
+  {
+    title: 'Chaquetas',
+    href: '/categoria/chaquetas',
+  },
+
+  {
+    title: 'Pantalones',
+    href: '/categoria/pantalones',
+  },
+
+  {
+    title: 'Botas',
+    href: '/categoria/botas',
+  },
+
+  {
+    title: 'Gafas',
+    href: '/categoria/gafas',
   },
 
   {
     title: 'Otros',
-    href: '/category/cascos',
+    href: '/categoria/otros',
   },
 ]

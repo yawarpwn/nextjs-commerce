@@ -9,12 +9,12 @@ const client = createClient({
 export async function getProducts() {
   const res = await client.getEntries({ content_type: 'productos' })
   const products = res.items
-
   const mappedProducts = products.map(({ fields, sys, metadata }) => {
-    const { offert, name, description, price, brand } = fields
+    const { offert, name, description, price, brand, category } = fields
     return {
       name,
       brand: brand ? brand : 'nacional',
+      category,
       offert: offert ? offert : null,
       description,
       id: sys.id,
@@ -34,23 +34,10 @@ export async function getProducts() {
   return mappedProducts
 }
 
-export async function getProduct(entryId) {
-  const res = await client.getEntry(entryId)
-  const { fields, sys, metadata } = res
-  const { name, description, price, images: imagesFromApi } = fields
-  const images = imagesFromApi.map((image) => {
-    return {
-      url: image.fields.file.url,
-      title: image.fields.title,
-    }
-  })
-
-  const entryMapped = {
-    name,
-    description,
-    price,
-    images,
-    id: sys.id,
-  }
-  return entryMapped
+export async function getCategories () {
+  const products = await getProducts()
+  const categoriesFromProduct = products.map(p => p.category[0])
+  const categories = [...new Set(categoriesFromProduct)]
+  return categories
 }
+
