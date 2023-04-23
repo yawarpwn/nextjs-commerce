@@ -40,7 +40,7 @@ export default function HeroSlider() {
     >
       {banners.map(({ src, alt }, index) => (
         <SwiperSlide key={index}>
-          <div className="w-full h-[300px] md:h-[400px] lg:h-[500px]">
+          <div className="w-full h-[250px] md:h-[400px] lg:h-[500px]">
             <img src={src} alt={alt} className="object-cover h-full w-full" />
           </div>
         </SwiperSlide>

@@ -5,9 +5,13 @@ export default function MobileNavigation({ open, onClose }) {
     <>
       <nav className={`mobileMenu-wrapper ${open ? 'mobileMenu-open' : ''}`}>
         <ul>
-          {navigationByCategory.map(({ href, title }) => (
+          {navigationByCategory.map(({ href, title, icon }) => (
             <Link key={title} href={href} onClick={onClose}>
-              <li>{title}</li>
+              <li className='flex space-x-4'>
+                <img className='mobileMenu-icon' src={icon} alt={`iconno de ${title}`} />
+                <span>{title}
+                </span>
+                </li>
             </Link>
           ))}
         </ul>
@@ -54,6 +58,12 @@ export default function MobileNavigation({ open, onClose }) {
 
           .mobileMenu-wrapper ul li:hover {
             background-color: #111;
+          }
+
+          .mobileMenu-icon {
+            max-width: 50px;
+            filter:  invert(1);
+
           }
         `}
       </style>
