@@ -6,17 +6,17 @@ export default function Footer() {
       title: 'Recursos',
       links: [
         {
-          title: 'recurso 1',
+          title: 'Productos',
+          href: '/productos',
+        },
+
+        {
+          title: 'Ofertas',
           href: '#',
         },
 
         {
-          title: 'recurso 2',
-          href: '#',
-        },
-
-        {
-          title: 'recurso 3',
+          title: 'Delivery',
           href: '#',
         },
       ],

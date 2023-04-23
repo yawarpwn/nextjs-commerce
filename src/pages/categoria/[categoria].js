@@ -3,7 +3,13 @@ import { getCategories, getProducts } from '@/services/getProducts'
 import SEO from '@/components/SEO'
 
 export default function Page({ products }) {
-  console.log({ productsInCategory: products })
+  if(products.length === 0) {
+    return <>
+      <div className='min-h-[calc(100vh-64px)] flex items-center justify-center'>
+        <h2 className='text-2xl font-extrabold'>No hay productos Aun</h2>
+      </div>
+    </>
+  }
   return (
     <>
       <SEO
@@ -12,7 +18,6 @@ export default function Page({ products }) {
           'Pagina de productos de Motos Center Tienda de partes de motos'
         }
       />
-      <h1>Product</h1>
       <ListOfProducts products={products} />
     </>
   )

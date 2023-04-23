@@ -1,3 +1,4 @@
+import { navigationByCategory } from '@/constants/navigation'
 import { nameToSlug } from '@/utils'
 import { createClient } from 'contentful'
 
@@ -35,9 +36,10 @@ export async function getProducts() {
 }
 
 export async function getCategories () {
-  const products = await getProducts()
-  const categoriesFromProduct = products.map(p => p.category[0])
-  const categories = [...new Set(categoriesFromProduct)]
-  return categories
+  // const products = await getProducts()
+  // const categoriesFromProduct = products.map(p => p.category[0])
+  // const categories = [...new Set(categoriesFromProduct)]
+  // return categories
+  return navigationByCategory.map(c => c.title.toLowerCase())
 }
 
