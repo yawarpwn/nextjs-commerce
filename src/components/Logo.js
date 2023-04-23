@@ -5,7 +5,7 @@ export default function Logo() {
       <Link href="/" className="uppercase font-extrabold text-2xl">
         <img
           className="logo"
-          src="https://www.revzilla.com/images/sites/revzilla/support/header/logo-c416dd1a00f74c1039a20b951088ad92.svg?vsn=d"
+          src="/assets/logo.svg"
           alt='Logotipo de motos'
         />
         {/* <span className="">MOTO</span> */}
