@@ -50,13 +50,13 @@ export default function CustomerOpinion() {
           tag="ul"
           loop
           modules={[Pagination]}
-          pagination={{clickable: true}}
+          pagination={{ clickable: true }}
         >
-          {customersOpinions.map(({ text, name }) => (
-            <SwiperSlide tag="li">
+          {customersOpinions.map(({ text, name }, index) => (
+            <SwiperSlide tag="li" key={index}>
               <div className="flex flex-row items-center mb-20">
                 <div className="flex flex-col   w-full">
-                  <p className="text-center mb-4">" {text} "</p>
+                  <p className="text-center mb-4">&quot; {text} &quot;</p>
                   <h4 className="text-center font-bold"> {name} </h4>
                 </div>
               </div>
