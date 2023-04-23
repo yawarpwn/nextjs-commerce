@@ -87,7 +87,7 @@ export default function WhatsappBtnPopup() {
                 className="relative flex items-center space-x-4  rounded-r-md border-l-2 border-green-500  py-4 px-3 shadow-sm   "
               >
                 <div className="w-10 h-10">
-                  <img src="/assets/foto.jpg" alt="Raquel Maldonado Ramirez" />
+                  <img src="/assets/foto.jpg" alt="Jesus Saavedra Maldonado" />
                 </div>
                 <div className="">
                   <div className="text-sm">Jesus Maldonado</div>
